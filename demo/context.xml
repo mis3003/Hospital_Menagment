@@ -1,0 +1,6 @@
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="org.postgresql.Driver"/>
+    <property name="url" value="postgres://mtrijymn:Ga3rZjTWFfAmyE9kEKDxsVsxHjYDgysj@flora.db.elephantsql.com/mtrijymn"/>
+    <property name="username" value="mtrijymn"/>
+    <property name="password" value="Ga3rZjTWFfAmyE9kEKDxsVsxHjYDgysj"/>
+</bean>
