@@ -8,8 +8,8 @@ export const usePatientForm =()=>{
             firstname: '',
             lastname: '',
             dateOfBirth: '',
-            PESEL: '',
-            City: '',
+            pesel: '',
+            city: '',
             street: '',
             zip_code: ''
         },
@@ -32,17 +32,35 @@ export const usePatientForm =()=>{
                     return 'Lastname should start with an uppercase letter';
                 }
             },
-            dateOfBirth: (value) => {
+            dateOfBirth:  (value) => {
+               
                 if (!value) {
-                    return 'Date of birth is required';
+                    return 'Data urodzenia jest wymagana';
                 }
-
-
-                if (value instanceof Date && !isNaN(value.getTime())) {
-                    return null;
-                } else {
+            
+                
+                const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+                if (!dateRegex.test(value)) {
+                    return 'Nieprawidłowy format daty. Poprawny format to YYYY-MM-DD';
+                }
+            
+               
+                const parts = value.split('-');
+                const year = parseInt(parts[0], 10);
+                const month = parseInt(parts[1], 10) - 1; 
+                const day = parseInt(parts[2], 10);
+                const date = new Date(year, month, day);
+            
+                if (
+                    date.getFullYear() !== year ||
+                    date.getMonth() !== month ||
+                    date.getDate() !== day
+                ) {
                     return 'Invalid date';
                 }
+            
+               
+                return null;
             },
 
 

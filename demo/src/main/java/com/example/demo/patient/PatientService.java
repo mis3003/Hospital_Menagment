@@ -2,6 +2,7 @@ package com.example.demo.patient;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -28,11 +29,11 @@ public class PatientService {
     }
 public void addNewPatient(Patient patient)
 {
-   Optional<Patient> patinetByPesel=patientRepository.findPatientByPESEL(patient.PESEL);
-   if (patinetByPesel.isPresent())
-   {
-      throw new IllegalStateException("Pesel aleready exist in database");
-   }
+//   Optional<Patient> patinetByPesel=patientRepository.findPatientBypesel(patient.pesel);
+//   if (!patinetByPesel.isPresent())
+//   {
+//      throw new IllegalStateException("Pesel aleready exist in database");
+//   }
    patientRepository.save(patient);
 }
 
@@ -52,29 +53,32 @@ public void addNewPatient(Patient patient)
     Patient patient=patientRepository.findById(patientId).orElseThrow(()->new IllegalStateException("Student not found"));
 
 
-    if(firstname!=null && !firstname.isEmpty() && !Objects.equals(patient.getFirstname(),firstname))
-    {
+
         patient.setFirstname(firstname);
+
+
+
+            patient.setLastname(lastname);
+
+
+
+            patient.setCity(city);
+
+
+
+            patient.setStreet(streat);
+
+            patient.setZip_code(zipCode);
+
     }
 
-        if(lastname!=null && !lastname.isEmpty() && !Objects.equals(patient.getLastname(),lastname))
-        {
-            patient.setLastname(lastname);
-        }
+    public Patient getPatientById(Long id) {
+        return patientRepository.findById(id).orElseThrow(()->new IllegalStateException("Student not found"));
+    }
 
-        if(city!=null && !city.isEmpty() && !Objects.equals(patient.getCity(),city))
-        {
-            patient.setCity(city);
-        }
-
-        if(streat!=null && !streat.isEmpty() && !Objects.equals(patient.getStreet(),streat))
-        {
-            patient.setStreet(streat);
-        }
-        if(zipCode!=null && !zipCode.isEmpty() && !Objects.equals(patient.getZip_code(),zipCode))
-        {
-            patient.setZip_code(zipCode);
-        }
+    public List<Patient> getPatientsSorted() {
+        Sort sortCriteria = Sort.by("lastname");
+        return patientRepository.findAll(sortCriteria);
     }
 }
 //  new Patient(1L,"Michał","Bartoszek", LocalDate.of(2000,12,13),"12312414123","Kraków","Reymonta","30-255"));

@@ -20,8 +20,8 @@ public class Patient {
     String firstname;
     String lastname;
     LocalDate dateOfBirth;
-    String PESEL;
-    String City;
+    String pesel;
+    String city;
     String street;
     String zip_code;
     @Transient
@@ -30,23 +30,23 @@ private Integer age;
     public Patient() {
     }
 
-    public Patient(Long id, String firstname, String lastname, LocalDate dateOfBirth, String PESEL, String city, String street, String zip_code) {
+    public Patient(Long id, String firstname, String lastname, LocalDate dateOfBirth, String pesel, String city, String street, String zip_code) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
-        this.PESEL = PESEL;
-        this.City = city;
+        this.pesel = pesel;
+        this.city = city;
         this.street = street;
         this.zip_code = zip_code;
     }
 
-    public Patient(String firstname, String lastname, LocalDate dateOfBirth, String PESEL, String city, String street, String zip_code) {
+    public Patient(String firstname, String lastname, LocalDate dateOfBirth, String pesel, String city, String street, String zip_code) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
-        this.PESEL = PESEL;
-        City = city;
+        this.pesel = pesel;
+        this.city = city;
         this.street = street;
         this.zip_code = zip_code;
     }
@@ -83,20 +83,20 @@ private Integer age;
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getPESEL() {
-        return PESEL;
+    public String getPesel() {
+        return pesel;
     }
 
-    public void setPESEL(String PESEL) {
-        this.PESEL = PESEL;
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
     }
 
     public String getCity() {
-        return City;
+        return city;
     }
 
     public void setCity(String city) {
-        City = city;
+        this.city = city;
     }
 
     public String getStreet() {
@@ -113,13 +113,5 @@ private Integer age;
 
     public void setZip_code(String zip_code) {
         this.zip_code = zip_code;
-    }
-
-    public Integer getAge() {
-        return Period.between(this.dateOfBirth,LocalDate.now()).getYears();
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 }

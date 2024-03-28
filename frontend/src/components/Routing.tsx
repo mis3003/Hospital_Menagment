@@ -3,6 +3,7 @@ import { Layout } from "./Layout";
 import { PatientList } from "../features/patients/PatientList";
 import { PatientForm } from "../features/patients/PatientForm";
 import { ErrorPage } from "../features/error/ErrorPage";
+import { PatientEditForm } from "../features/patients/PatientEditForm";
 
 const routes: RouteObject[] = [
 
@@ -20,7 +21,7 @@ const routes: RouteObject[] = [
             },
             {
                 path: '/patient/:id',
-                element: <PatientForm />
+                element: <PatientEditForm />
             },
             {
                 path: '*',

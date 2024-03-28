@@ -3,8 +3,8 @@ export type PatientType={
     firstname:String
     lastname:String
     dateOfBirth:String
-    PESEL:String
-    City:String
+    pesel:String
+    city:String
     street:String
     zip_code:String
 }

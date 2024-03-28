@@ -1,21 +1,21 @@
 import { useParams } from "react-router-dom"
 import { Button, Group, NumberInput, Stack, TextInput } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import { useNavigate    } from 'react-router-dom';
 import { PatientFormValues } from "../../types/PatientFormValues";
 import { usePatientForm } from "../hooks/usePatientForm";
-import { addPatient } from "../../types/api/patient";
-export const PatientForm = () => {
+import { editPatient, } from "../../types/api/patient";
+export const PatientEditForm = () => {
 
     const form = usePatientForm();
 
-const handleSubmit=(vals:PatientFormValues)=>{
-    console.log(vals);
-    addPatient(vals);
-}
+
     const { id } = useParams();
    
 
-
+    const handleSubmit=(vals:PatientFormValues)=>{
+        console.log(vals);
+        editPatient(Number(id),vals);
+        }
 
 
   // useFetchPatientById(id)
@@ -50,17 +50,17 @@ const handleSubmit=(vals:PatientFormValues)=>{
                 label="PESEL"
                 //  description="Input description"
                 placeholder="Input Pesel"
-                minLength={11}
+                
                 maxLength={11}
                 style={{ width: '700px' }} 
-                {...form.getInputProps('pesel')}
+                {...form.getInputProps('PESEL')}
             />
             <TextInput
                 label="City"
                 //  description="Input description"
                 placeholder="Input city"
                 style={{ width: '700px' }} 
-                {...form.getInputProps('city')}
+                {...form.getInputProps('City')}
             />
             <TextInput
                 label="Streat"

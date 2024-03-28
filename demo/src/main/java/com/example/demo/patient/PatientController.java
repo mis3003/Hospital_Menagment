@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000/")
 @RequestMapping("api/patient")
 public class PatientController {
 
@@ -20,6 +21,17 @@ public class PatientController {
     public List<Patient> getPatients()
     {
         return patientService.getPatients();
+    }
+
+    @GetMapping(path = "/sorted")
+    public List<Patient> getPatientsSorted()
+    {
+        return patientService.getPatientsSorted();
+    }
+
+    @GetMapping(path="{patientId}")
+    public Patient getPatientById(@PathVariable("patientId") Long id){
+    return patientService.getPatientById(id);
     }
 
     @PostMapping
@@ -37,11 +49,11 @@ public class PatientController {
     @PutMapping(path="{patientId}")
     public void updatePatient(
             @PathVariable("patientId") Long patientId,
-            @RequestParam(required = false) String firstname,
-            @RequestParam(required = false) String lastname,
-            @RequestParam(required = false) String city,
-            @RequestParam(required = false) String streat,
-            @RequestParam(required = false) String zip_code
+            @RequestParam() String firstname,
+            @RequestParam() String lastname,
+            @RequestParam() String city,
+            @RequestParam() String streat,
+            @RequestParam() String zip_code
 
     )
     {
