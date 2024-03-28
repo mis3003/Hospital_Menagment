@@ -1,32 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { PatientType } from "../PatientType";
 import { PatientFormValues } from "../PatientFormValues";
-import { API_URL } from '../../config';
+
 const BASE_API_URL = "http://localhost:8080/api/"
 
 //GET
-const Fetch = () => {
-  const [posts, setPosts] = useState<PatientType[]>([]);
-  console.log(API_URL);
-  useEffect(() => {
-
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch(API_URL + '/patient');
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        const postsData = await response.json();
-        setPosts(postsData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-    fetchPosts();
-  }, []);
-
-  return posts;
-};
 
 const FetchSorted = () => {
   const [posts, setPosts] = useState<PatientType[]>([]);
@@ -110,6 +88,6 @@ const editPatient = async (patientID: number, vals: PatientFormValues) => {
 
 
 
-export { Fetch, addPatient, deletePatient, editPatient, FetchSorted }
+export {  addPatient, deletePatient, editPatient, FetchSorted }
 
 

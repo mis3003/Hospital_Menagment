@@ -4,7 +4,6 @@ import { Routing } from './components/Routing';
 import '@mantine/core/styles.css';
 import { createTheme, MantineProvider } from '@mantine/core';
 
-import {Fetch} from './types/api/patient';
 
 
 const theme = createTheme({
@@ -14,7 +13,7 @@ const theme = createTheme({
 function App() {
 
 
-  Fetch();
+
 
   return (
     <MantineProvider theme={theme}>

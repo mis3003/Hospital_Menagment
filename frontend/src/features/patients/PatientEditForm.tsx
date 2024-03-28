@@ -53,14 +53,14 @@ export const PatientEditForm = () => {
                 
                 maxLength={11}
                 style={{ width: '700px' }} 
-                {...form.getInputProps('PESEL')}
+                {...form.getInputProps('pesel')}
             />
             <TextInput
                 label="City"
                 //  description="Input description"
                 placeholder="Input city"
                 style={{ width: '700px' }} 
-                {...form.getInputProps('City')}
+                {...form.getInputProps('city')}
             />
             <TextInput
                 label="Streat"
